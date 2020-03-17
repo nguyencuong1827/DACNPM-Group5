@@ -1,9 +1,9 @@
 package service
 
 import (
-	"github.com/DACNPM-Group5/leesin/pkg/articlerepository"
-	"github.com/DACNPM-Group5/leesin/pkg/categoryrepository"
-	"github.com/DACNPM-Group5/leesin/pkg/model"
+	"DACNPM-Group5/leesin/pkg/articlerepository"
+	"DACNPM-Group5/leesin/pkg/categoryrepository"
+	"DACNPM-Group5/leesin/pkg/model"
 )
 
 type Repository interface {

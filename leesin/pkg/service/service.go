@@ -1,7 +1,7 @@
 package service
 
 import (
-	"github.com/DACNPM-Group5/leesin/pkg/model"
+	"DACNPM-Group5/leesin/pkg/model"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/cast"
 	"log"

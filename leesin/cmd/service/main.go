@@ -1,11 +1,11 @@
 package main
 
 import (
-	"github.com/DACNPM-Group5/leesin/pkg/articlerepository"
-	"github.com/DACNPM-Group5/leesin/pkg/categoryrepository"
-	"github.com/DACNPM-Group5/leesin/pkg/database"
-	"github.com/DACNPM-Group5/leesin/pkg/model"
-	"github.com/DACNPM-Group5/leesin/pkg/service"
+	"DACNPM-Group5/leesin/pkg/articlerepository"
+	"DACNPM-Group5/leesin/pkg/categoryrepository"
+	"DACNPM-Group5/leesin/pkg/database"
+	"DACNPM-Group5/leesin/pkg/model"
+	"DACNPM-Group5/leesin/pkg/service"
 	"github.com/gin-gonic/gin"
 )
 

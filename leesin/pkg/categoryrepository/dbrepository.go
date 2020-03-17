@@ -1,7 +1,7 @@
 package categoryrepository
 
 import (
-	"github.com/DACNPM-Group5/leesin/pkg/model"
+	"DACNPM-Group5/leesin/pkg/model"
 	"github.com/jinzhu/gorm"
 )
 

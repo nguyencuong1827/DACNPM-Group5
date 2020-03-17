@@ -1,6 +1,6 @@
 package categoryrepository
 
-import "github.com/DACNPM-Group5/leesin/pkg/model"
+import "DACNPM-Group5/leesin/pkg/model"
 
 type Repository interface {
 	Create(category *model.Category) error

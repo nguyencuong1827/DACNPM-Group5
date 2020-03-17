@@ -1,8 +1,8 @@
 package articlerepository
 
 import (
+	"DACNPM-Group5/leesin/pkg/model"
 	"encoding/json"
-	"github.com/DACNPM-Group5/leesin/pkg/model"
 )
 
 type Repository interface {
