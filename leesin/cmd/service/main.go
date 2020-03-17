@@ -4,6 +4,7 @@ import (
 	"github.com/DACNPM-Group5/leesin/pkg/articlerepository"
 	"github.com/DACNPM-Group5/leesin/pkg/categoryrepository"
 	"github.com/DACNPM-Group5/leesin/pkg/database"
+	"github.com/DACNPM-Group5/leesin/pkg/model"
 	"github.com/DACNPM-Group5/leesin/pkg/service"
 	"github.com/gin-gonic/gin"
 )
@@ -17,6 +18,8 @@ func main() {
 	}
 	defer db.Close()
 	db = db.Debug()
+
+	db.AutoMigrate(model.Article{}, model.Category{})
 
 	// repository
 	articleDBRepo := articlerepository.NewDBRepository(db)
