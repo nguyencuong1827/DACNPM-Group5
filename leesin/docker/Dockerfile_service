@@ -1,0 +1,13 @@
+FROM golang:latest as builder
+
+WORKDIR /go/src/DACNPM-Group5
+COPY ./leesin ./leesin
+
+RUN go build -tags static_all -o service ./leesin/cmd/service/main.go
+
+FROM scratch
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+COPY --from=builder /usr/local/go/lib/time/zoneinfo.zip /usr/local/go/lib/time/
+COPY --from=builder /go/src/DACNPM-Group5/service .
+
+ENTRYPOINT ["./service"]
