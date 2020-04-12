@@ -11,6 +11,6 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
+Route::get('/', function() {
+    return 'Welcome to ' . env('APP_NAME');
 });
