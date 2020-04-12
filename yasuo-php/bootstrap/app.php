@@ -61,6 +61,7 @@ $app->singleton(
 
 $app->configure('app');
 $app->configure('logging');
+$app->configure('auth');
 
 /*
 |--------------------------------------------------------------------------
@@ -77,9 +78,9 @@ $app->configure('logging');
 //     App\Http\Middleware\ExampleMiddleware::class
 // ]);
 
-// $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
-// ]);
+$app->routeMiddleware([
+    'auth' => App\Http\Middleware\Authenticate::class,
+]);
 
 /*
 |--------------------------------------------------------------------------
@@ -93,8 +94,10 @@ $app->configure('logging');
 */
 
 $app->register(App\Providers\AppServiceProvider::class);
-// $app->register(App\Providers\AuthServiceProvider::class);
+$app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
+$app->register(Laravel\Passport\PassportServiceProvider::class);
+$app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
 
 if($app->environment('local')) {
     $app->register(Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
@@ -114,5 +117,7 @@ if($app->environment('local')) {
 Route::group(['namespace' => 'App\Http\Controllers'], function() {
     require __DIR__.'/../routes/web.php';
 });
+
+Dusterio\LumenPassport\LumenPassport::routes($app);
 
 return $app;
