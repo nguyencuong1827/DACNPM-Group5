@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Database\Migrations\MigrationCreator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -17,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
         $this->registerServices();
         $this->registerHelpers();
         $this->morphMap();
+        $this->fixMigrateMakeCommand();
     }
 
     private function registerServices()
@@ -40,5 +42,14 @@ class AppServiceProvider extends ServiceProvider
     private function morphMap()
     {
         Relation::morphMap(config('app.morph_map'));
+    }
+
+    private function fixMigrateMakeCommand()
+    {
+        $this->app->when(MigrationCreator::class)
+            ->needs('$customStubPath')
+            ->give(function ($app) {
+                return $app->basePath('stubs');
+            });
     }
 }
