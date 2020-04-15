@@ -116,6 +116,26 @@ if($app->environment('local')) {
 
 Route::group(['namespace' => 'App\Http\Controllers'], function() {
     require __DIR__.'/../routes/web.php';
+
+    Route::group(['namespace'=>'Api', 'prefix' => 'api'], function() {
+        Route::group(['namespace'=>'Client', 'prefix' => 'client', 'middleware' => ['auth']], function() {
+            Route::group(['namespace'=>'V1', 'prefix' => 'v1'], function() {
+                require __DIR__.'/../routes/api/client/v1.php';
+            });
+        });
+
+        Route::group(['namespace'=>'Admin', 'prefix' => 'admin', 'middleware' => ['auth:admin']], function() {
+            Route::group(['namespace'=>'V1', 'prefix' => 'v1'], function() {
+                require __DIR__.'/../routes/api/admin/v1.php';
+            });
+        });
+
+        Route::group(['namespace'=>'Index', 'prefix' => ''], function() {
+            Route::group(['namespace'=>'V1', 'prefix' => 'v1'], function() {
+                require __DIR__.'/../routes/api/index/v1.php';
+            });
+        });
+    });
 });
 
 Dusterio\LumenPassport\LumenPassport::routes($app);
